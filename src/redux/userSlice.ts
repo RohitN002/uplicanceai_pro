@@ -6,25 +6,39 @@ interface UserState {
   address: string;
   email: string;
   phone: string;
+  hasUnsavedChanges: boolean;
 }
 
-const initialState: UserState = {
-  id: "",
-  name: "",
-  address: "",
-  email: "",
-  phone: "",
+const getInitialUser = (): UserState => {
+  const savedUser = localStorage.getItem("user");
+  return savedUser
+    ? { ...JSON.parse(savedUser), hasUnsavedChanges: false }
+    : {
+        id: `USR-${Math.random().toString(36).substring(2, 8)}`,
+        name: "",
+        address: "",
+        email: "",
+        phone: "",
+        hasUnsavedChanges: false,
+      };
 };
 
-export const userSlice = createSlice({
+const initialState: UserState = getInitialUser();
+
+const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<UserState>) => {
-      return { ...state, ...action.payload };
+    setUser: (state, action: PayloadAction<Partial<UserState>>) => {
+      Object.assign(state, action.payload);
+      state.hasUnsavedChanges = true;
+    },
+    saveUser: (state) => {
+      localStorage.setItem("user", JSON.stringify(state));
+      state.hasUnsavedChanges = false;
     },
   },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, saveUser } = userSlice.actions;
 export default userSlice.reducer;
