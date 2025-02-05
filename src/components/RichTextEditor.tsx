@@ -6,7 +6,7 @@ const RichTextEditor = () => {
   const [content, setContent] = useState("");
 
   return (
-    <div>
+    <div style={{ borderRadius: "15px", border: "1px solid #ccc" }}>
       <ReactQuill theme="snow" value={content} onChange={setContent} />
     </div>
   );
