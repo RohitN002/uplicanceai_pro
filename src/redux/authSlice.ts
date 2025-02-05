@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   signInWithPopup,
   signOut,
-  onAuthStateChanged,
+  //   onAuthStateChanged,
   User,
 } from "firebase/auth";
 import { auth, googleProvider } from "../firebaseConfig";

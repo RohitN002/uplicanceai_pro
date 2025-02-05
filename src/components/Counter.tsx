@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Typography, Box } from "@mui/material";
 import { useSpring, animated } from "react-spring";
-import { green } from "@mui/material/colors";
+// import { green } from "@mui/material/colors";
 
 // Custom cubic Bezier easing function
 const cubicBezier =
@@ -17,6 +17,7 @@ const cubicBezier =
       ((a * t + b) * t + c) * t;
 
     const x = calcBezier(t, aX, bX, cX);
+    console.log(x);
     const y = calcBezier(t, aY, bY, cY);
     return y;
   };

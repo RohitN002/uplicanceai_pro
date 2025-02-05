@@ -46,12 +46,12 @@
 // };
 
 // export default Dashboard;
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { useSpring, animated } from "react-spring";
 import Counter from "../components/Counter";
 import UserForm from "../components/UserForm";
 import RichTextEditor from "../components/RichTextEditor";
-import UserChart from "../components/UserChart";
+// import UserChart from "../components/UserChart";
 import AnimatedForm from "../components/CurveComponent";
 
 const Dashboard = () => {
